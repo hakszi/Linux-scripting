@@ -1,7 +1,5 @@
 #!/bin/bash
 
-function whatsmyip()
-{
 intf=$(ip a | grep " UP " | cut -d ' ' -f 2 | cut -d ':' -f 1)
 localip=$(hostname -I | cut -d ' ' -f1 )
 publicip=$(curl --silent --show-error https://ipinfo.io/ip 2>&1)
@@ -19,4 +17,3 @@ echo -n "Primary & Secondary DNS (IPv4): "
   echo $dns
 echo "Hardware MAC address: $mac"
 echo "Location: $country, $city"
-}
