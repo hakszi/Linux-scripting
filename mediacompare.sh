@@ -1,13 +1,7 @@
 #!/bin/bash
 
-## USE:
-	# Compare video file's length of the same (asked) extension. 
-## USEFUL WHEN:
-	# Need to compare duplicated video files that fail hash check.
-
-
 files=`ls ./*`
-tmp=/tmp/tmpMEDIA
+tmp=$(mktemp)
 
 if [[ ! -e $tmp ]]; then
     touch $tmp
@@ -36,3 +30,5 @@ if [[ $counter == 0 ]]; then
 else
     sort -shr $tmp
 fi
+
+rm $tmp
