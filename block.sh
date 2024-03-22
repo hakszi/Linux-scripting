@@ -62,7 +62,7 @@ else
   done
 fi
 
-
-
 #tshark -r $tmp -Y "dns.count.answers > 0" -T fields -e dns.qry.name -e dns.resp.name | sort -k1 | cut -f1 | awk '!seen[$0]++'
 #tshark -r $tmp -Y "dns.flags.response == 1 && dns.flags.rcode == 3" -T fields -e dns.qry.name -e dns.resp.name | sort -k1 | cut -f1 | awk '!seen[$0]++'
+
+rm $tmp
