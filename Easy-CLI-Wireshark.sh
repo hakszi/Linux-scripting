@@ -1,12 +1,6 @@
 #!/bin/bash
 
-tmp=/tmp/tmpSHARK
-if [[ ! -e $tmp ]]; then
-    touch $tmp
-else
-    rm $tmp
-    touch $tmp
-fi
+tmp=$(mktemp)
 
 if [[ $1 == "" ]]; then
     interface=`tshark -D | egrep "(^| )1.( |$)" | cut -d '.' -f 2 | cut -d ' ' -f 2`
@@ -33,3 +27,5 @@ fi
 #tshark -i $interface -w $tmp -a packets:2000
 tshark -i $interface -w $tmp -a duration:30
 tshark -r $tmp -Y "dns.count.answers > 0" -T fields -e dns.qry.name -e dns.resp.name | sort -k1 | cut -f1 | awk '!seen[$0]++'
+
+rm $tmp
