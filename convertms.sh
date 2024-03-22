@@ -3,9 +3,6 @@
 function convertms()
 {
   tmp_files=$(mktemp).
-  if [[ ! -e $tmp_files ]]; then
-      touch $tmp_files
-  fi
 
   find . -type f \( -name '*.docx' -o -name '*.doc' \) -printf %P\\n | sed -e 's/ /\\ /g' > "$tmp_files"
 
@@ -40,4 +37,6 @@ function convertms()
   
   echo "Done! Moved every MS file to /tmp/ for easier recovery."
   exiftool -r -overwrite_original -all= *
+
+  rm $tmp_files
 };
