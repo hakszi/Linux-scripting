@@ -3,13 +3,6 @@
 files=`ls ./*`
 tmp=$(mktemp)
 
-if [[ ! -e $tmp ]]; then
-    touch $tmp
-else
-    rm -f $tmp
-fi
-
-
 if [[ $1 == "" ]]; then
     read -p "What extensions are your videos? " format
 else
