@@ -25,7 +25,7 @@
  
 # media compare
 	- in the current folder finds every video/audio file's lengths, compares them and sorts them accordingly
-	- use: some video/audio files are the exact same, but for some reason (like compression) have different sizes and hashes (which this script utiilizies)
+	- use: some video/audio files are the exact same, but for some reason (like compression) have different sizes and hashes. This script compares them by length, and prints all the duplicate files.
 	- dependencies: mediainfo
 
 
