@@ -42,4 +42,4 @@ sort -k1,1 -hr $tmp | awk '
     }
   }
 '
-rm $tmp
+trash $tmp
