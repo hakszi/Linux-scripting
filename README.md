@@ -48,6 +48,10 @@
 	- dependencies: libreoffice
 
 
+# watch
+	- evaluates how much time it is to watch all the video / audio files in the current folder
+ 	- dependencies: mediainfo
+
 
 # wgetsize function
 	- downloads a whole FTP server without annoyances.
