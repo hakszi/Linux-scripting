@@ -1,33 +1,45 @@
 #!/bin/bash
 
-files=()
-while IFS= read -r -d $'\0' file; do
-    files+=("$file")
-done < <(find . -maxdepth 1 -type f -print0)
-
+files=($(find . -maxdepth 1 -type f))
 tmp=$(mktemp)
 
-if [[ -z "$1" ]]; then
-    read -p "What extensions are your videos? " format
-else
-    format=$1
-fi
-clear
 counter=0
 for i in "${files[@]}"
 do
-    if [[ "${i##*.}" == "$format" ]];then
-        duration=$(mediainfo --Inform="Video;%Duration%" "$i" | cut -d '.' -f1)
+    if duration=$(mediainfo --Inform="Video;%Duration%" "$i" 2>/dev/null | cut -d '.' -f1); then
+      if [[ "$duration" =~ ^-?[0-9]+([.][0-9]+)?$ ]]; then
         echo -n "$duration    " >> $tmp
         echo "$i" | cut -d '/' -f2- >> $tmp
         ((counter++))
+      fi
     fi
 done
-if [[ $counter == 0 ]]; then
-    echo "Sorry, nothing was found with the extension of \"$format\"." >&2
-else
-    sort -hr $tmp
-fi
 
+sort -hr $tmp 
+
+echo 
+echo "-------------- duplicates --------------"
+echo
+
+sort -k1,1 -hr $tmp | awk '
+  {
+    if (seen[$1]) {
+      duplicates[$1] = duplicates[$1] " " $2
+    } else {
+      seen[$1] = 1
+      duplicates[$1] = $2
+    }
+  }
+  END {
+    for (duration in duplicates) {
+      if (split(duplicates[duration], files) > 1) {
+        printf "%s", duration
+        for (i in files) {
+          printf " %s", files[i]
+        }
+        printf "\n"
+      }
+    }
+  }
+'
 rm $tmp
-
