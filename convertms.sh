@@ -1,5 +1,3 @@
-#!/bin/bash
-
 function convertms()
 {
   tmp_files=$(mktemp).
@@ -33,10 +31,6 @@ function convertms()
   done <"$tmp_files"
 
 
-  find . -type f \( -name '*.docx' -o -name '*.doc' -o -name '*.xlsx' -o -name '*.xls' -o -name '*.ppt' -o -name '*.pptx' -o -name '*.pps' -o -name '*.ppsx' \) -exec mv -t "/tmp/" {} + 
+  find . -type f \( -name '*.docx' -o -name '*.doc' -o -name '*.xlsx' -o -name '*.xls' -o -name '*.ppt' -o -name '*.pptx' -o -name '*.pps' -o -name '*.ppsx' \) -exec trash -f {} + 
   
-  echo "Done! Moved every MS file to /tmp/ for easier recovery."
-  exiftool -r -overwrite_original -all= *
-
-  rm $tmp_files
 };
