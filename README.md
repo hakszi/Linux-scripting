@@ -60,7 +60,6 @@
 
 # whatsmyip
 	- provides various network informations, namely:
-		- speed
 		- interface name
 		- local ip
 		- public ip
