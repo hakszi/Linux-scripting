@@ -3,7 +3,6 @@
 files=($(find . -maxdepth 1 -type f))
 tmp=$(mktemp)
 
-clear
 counter=0
 sum=0
 
