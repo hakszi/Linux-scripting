@@ -1,3 +1,5 @@
+#!/bin/bash
+
 speed=$(mktemp)
 intf=$(ip a | grep " UP " | cut -d ' ' -f 2 | cut -d ':' -f 1)
 localip=$(hostname -I | cut -d ' ' -f1 )
