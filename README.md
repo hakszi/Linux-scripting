@@ -1,4 +1,4 @@
-- dns-block-analyzer
+# dns-block-analyzer
 	- captures a specified ammount of packages (or for a duration), and evaluates what DNS addresses have been blocked
 	- use: debug purposes, when a service / website doesn't work, and need to diagnose.
 	- note: to be run with elevated privileges (sudo)!
@@ -6,7 +6,7 @@
 
 
 
-- convertms
+# convertms
 	- recursively finds and converts all files with microsoft extensions to opendocument extensions inside the current folder where the script is run, and recursively in all folders below.
 	- conversion:
 		- .docx/doc -> .odt
@@ -17,45 +17,44 @@
 
 
 
-- easy cli wireshark -> network package examiner
+# network package examiner
 	- captures network packages for 30 sec, sorts, formats, deduplicates them, and prints them on the console.
 	- note: run with "-l" flag to choose interface, and "-h" for detailed description. By default it'll choose the first available interface.
 	- note: to be run with elevated privileges (sudo)!
 	- dependencies: tshark
 
 
-- jupiter to pdf -> jupyter to pdf
+# jupyter to pdf
 	- converts all and every .ipynb extensioned jupyter files to PDF files, while tries to keep the page's style intact
 	- dependencies: python3
 
 
 
-- media compare
+# media compare
 	- in the current folder finds every video/audio file's lengths, compares them and sorts them accordingly
 	- use: some video/audio files are the exact same, but for some reason (like compression) have different sizes and hashes (which this script utiilizies)
 	- dependencies: mediainfo
 
 
 
-- sendfile & receivefile
+# sendfile & receivefile
 	- send and receive (via netcat) functions intended to be put into .bashrc or .zshrc files
 	- use: quick file transfer between virtual machines is it's main task, but can also be used for P2P file sharing via the internet.	
 	- dependencies: netcat
 
 
-
-- topdf function
+# topdf function
 	- converts every document file (docx, doc, odt) and PPT file (odp) to pdf. Inteded to complement previous "convertms" script.
 	- dependencies: libreoffice
 
 
 
-- wgetsize function
+# wgetsize function
 	- downloads a whole FTP server without annoyances.
 
 
 
-- whatsmyip
+# whatsmyip
 	- provides various network informations, namely:
 		- speed
 		- interface name
