@@ -24,8 +24,16 @@ else
     interface=$1
 fi
 
+echo -n
+echo -n "---------------- running script for 30 sec ----------------"
+echo -n
 #tshark -i $interface -w $tmp -a packets:2000
 tshark -i $interface -w $tmp -a duration:30
+
+echo -n
+echo -n "Results:"
+echo -n
+
 tshark -r $tmp -Y "dns.count.answers > 0" -T fields -e dns.qry.name -e dns.resp.name | sort -k1 | cut -f1 | awk '!seen[$0]++'
 
 rm $tmp
