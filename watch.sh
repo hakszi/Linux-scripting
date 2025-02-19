@@ -22,4 +22,4 @@ second=$((total_seconds % 60))
 
 echo "$hour:$(printf "%02d" $minute):$(printf "%02d" $second)"
 
-rm $tmp
+trash $tmp
