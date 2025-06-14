@@ -71,3 +71,7 @@
 		- network speed
 	- based on mullvad's and ipinfo's services, can be changed to other sites.
 	- dependencies: speedtest-cli, 
+
+
+## License
+This project uses the MIT License. See [LICENSE](LICENSE) for details.
